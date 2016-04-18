@@ -1,0 +1,14 @@
+[
+    {
+        "name": "agolubnichenko/agp-core",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/AGolubnichenko/agp-core/",
+            "reference": "dev"
+        },
+        "type": "library",
+        "installation-source": "source"
+    }
+]

@@ -1,0 +1,19 @@
+{
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "agolubnichenko/agp-core",
+                "version": "1.0.0",
+                "source": {
+                    "url": "https://github.com/AGolubnichenko/agp-core/",
+                    "type": "git",
+                    "reference": "dev"
+                }
+            }                        
+        }
+    ],    
+    "require" : {
+        "agolubnichenko/agp-core": "*"
+    }
+}
