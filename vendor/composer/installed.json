@@ -1,14 +1,19 @@
 [
     {
-        "name": "agolubnichenko/agp-core",
-        "version": "1.0.0",
-        "version_normalized": "1.0.0.0",
+        "name": "agp/agp-core",
+        "version": "2.0.0",
+        "version_normalized": "2.0.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/AGolubnichenko/agp-core/",
-            "reference": "dev"
+            "reference": "master"
         },
         "type": "library",
-        "installation-source": "source"
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Agp\\Core\\": "src/classes/"
+            }
+        }
     }
 ]

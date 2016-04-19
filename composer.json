@@ -3,17 +3,35 @@
         {
             "type": "package",
             "package": {
-                "name": "agolubnichenko/agp-core",
-                "version": "1.0.0",
+                "name": "agp/agp-core",
+                "version": "2.0.0",
                 "source": {
                     "url": "https://github.com/AGolubnichenko/agp-core/",
                     "type": "git",
-                    "reference": "dev"
+                    "reference": "master"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Agp\\Core\\": "src/classes/"
+                    }
                 }
             }                        
         }
     ],    
     "require" : {
-        "agolubnichenko/agp-core": "*"
+        "agp/agp-core": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Agp\\Plugin\\Awb\\": "classes/"
+        }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "rm -rf vendor/**/**/.git"
+        ],
+        "post-install-cmd": [
+            "rm -rf vendor/**/**/.git"
+        ]
     }
 }
