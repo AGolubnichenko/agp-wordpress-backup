@@ -19,7 +19,10 @@
         }
     ],    
     "require" : {
-        "agp/agp-core": "~2.0"
+        "agp/agp-core": "2.*",
+        "splitbrain/php-archive": "1.*",
+        "ifsnop/mysqldump-php": "2.*",
+        "dropbox/dropbox-sdk": "1.1.*"
     },
     "autoload": {
         "psr-4": {
