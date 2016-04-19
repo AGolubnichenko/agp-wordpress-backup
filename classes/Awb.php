@@ -36,8 +36,16 @@ class Awb extends ModuleAbstract {
      * @var Ajax 
      */
     private $ajax;
+
     
-    
+    /**
+     * Backup Manager
+     * 
+     * @var BackupManager;
+     */
+    private $backupManager;
+
+
     /**
      * The single instance of the class 
      * 
@@ -72,31 +80,14 @@ class Awb extends ModuleAbstract {
     public function __construct() {
         parent::__construct(dirname(dirname(__FILE__)));
         
-        $this->session = Session::instance();        
         $this->settings = Settings::instance( $this );
+        $this->session = Session::instance();        
         $this->ajax = Ajax::instance();
-        
-        $this->updatePlugin();        
+        $this->backupManager = BackupManager::instance();
         
         add_action( 'wp_enqueue_scripts', array($this, 'enqueueScripts' ) );                
-        add_action( 'admin_enqueue_scripts', array($this, 'enqueueAdminScripts' ));                    
+        add_action( 'admin_enqueue_scripts', array($this, 'enqueueAdminScripts' ));       
     }
-
-    public function updatePlugin () {
-        $currentVersion = $this->getVersion();
-        $version = get_option( 'awb-version' );
-        if (empty($version)) {
-            $version = '1.0.0';
-        }
-        
-        if ( function_exists( 'version_compare' ) && version_compare( $version , $currentVersion) == -1 ) {
-//            if ( version_compare( $version , 'xx.xx.xx', '<' ) ) {
-//            }       
-            
-            update_option( 'awb-version', $currentVersion );   
-            $this->settings->refreshConfig();
-        }
-    }    
     
     public function enqueueScripts () {
         wp_register_script( 'awb', $this->getAssetUrl('js/main.js'), array('jquery') ); 
@@ -119,19 +110,21 @@ class Awb extends ModuleAbstract {
         wp_enqueue_script( 'awb' );         
         wp_enqueue_style( 'awb-css' );            
     }
-    function getVersion() {
+
+    public function getVersion() {
         return $this->version;
     }
 
-    function getSettings() {
+    public function getSettings() {
         return $this->settings;
     }
 
-    function getSession() {
+    public function getSession() {
         return $this->session;
     }
 
-    function getAjax() {
+    public function getAjax() {
         return $this->ajax;
     }
+
 }
