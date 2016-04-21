@@ -1,5 +1,5 @@
 <?php
-namespace Agp\Core\Persistence\Entity;
+namespace Awb\Core\Persistence\Entity;
 
 class TaxonomyEntity extends Entity {
     private $term_id;

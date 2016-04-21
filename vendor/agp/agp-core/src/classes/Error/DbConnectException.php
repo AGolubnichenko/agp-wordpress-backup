@@ -1,5 +1,5 @@
 <?php
-namespace Agp\Core\Error;
+namespace Awb\Core\Error;
 
 class DbConnectException extends ExceptionAbstract {
 }

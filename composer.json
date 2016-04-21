@@ -12,8 +12,9 @@
                 },
                 "autoload": {
                     "psr-4": {
-                        "Agp\\Core\\": "src/classes/"
-                    }
+                        "Awb\\Core\\": "src/classes/"
+                    },
+                    "files": ["src/classes/Agp.php"]
                 }
             }                        
         }
@@ -30,10 +31,12 @@
     },
     "scripts": {
         "post-update-cmd": [
-            "rm -rf vendor/**/**/.git"
+            "rm -rf vendor/**/**/.git",
+            "grep -rl 'Agp' ./vendor/agp/ | xargs sed -i 's/Agp\\\\Core/Awb\\\\Core/g'"
         ],
         "post-install-cmd": [
-            "rm -rf vendor/**/**/.git"
+            "rm -rf vendor/**/**/.git",
+            "grep -rl 'Agp' ./vendor/agp/ | xargs sed -i 's/Agp\\\\Core/Awb\\\\Core/g'"
         ]
     }
 }

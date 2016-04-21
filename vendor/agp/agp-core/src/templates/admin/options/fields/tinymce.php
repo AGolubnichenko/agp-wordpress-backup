@@ -12,19 +12,27 @@
         $atts = $atts_s;
     }
     
-    $value = esc_attr($args->data[$args->field]);
+    $value = html_entity_decode( htmlspecialchars_decode( $args->data[$args->field] ) );
+    $tinymce_atts = array(
+        'wpautop' => true,
+        'textarea_name' => "{$args->key}[{$args->field}]", 
+        'textarea_rows' => 8, 
+        'editor_class' => $class, 
+    );
 ?>
 <tr>
     <th scope="row"><?php echo $label;?></th>
     <td>
-        <div class="agp-field-settings-row agp-field-settings-row-colorpicker">
-            <input <?php echo $atts;?> class="<?php echo !empty($class) ? $class : '';?> agp-color-picker" type="text" id="<?php echo "{$args->key}[{$args->field}]"; ?>" name="<?php echo "{$args->key}[{$args->field}]"; ?>" value="<?php echo $value;?>">                
-            <?php if (!empty($note)): ?>
+        <div class="agp-field-settings-row">
+            <div class="agp-field-tinymce">
+                 <?php wp_editor($value, "{$args->key}_{$args->field}", $tinymce_atts);?> 
+            </div>
+        <?php if (!empty($note)): ?>
             <div class="agp-field-settings-notice">
                 <span class="dashicons dashicons-editor-help"></span>
-                <p class="description"><?php echo $note;?><span class="dashicons dashicons-no-alt"></span></p>
-            </div>    
-            <?php endif;?>    
-        </div>
+                <p class="description"><?php echo $note;?><span class="dashicons dashicons-no-alt"></span></p><?php endif;?>
+            </div>  
+        </div>      
     </td>
 </tr>    
+ 

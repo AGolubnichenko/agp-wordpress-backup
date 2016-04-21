@@ -1,7 +1,7 @@
 <?php
-namespace Agp\Core\Fields;
+namespace Awb\Core\Fields;
 
-use Agp\Core\Module;
+use Awb\Core\Module;
 
 abstract class RepeaterAbstract extends Module {
     

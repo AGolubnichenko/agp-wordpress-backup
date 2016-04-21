@@ -18,6 +18,6 @@
     <th scope="row"><?php echo $label;?></th>
     <td>
         <textarea <?php echo $atts;?> rows="6" <?php echo !empty($class) ? ' class="'.$class.'"': '';?> id="<?php echo "{$args->key}[{$args->field}]"; ?>" name="<?php echo "{$args->key}[{$args->field}]"; ?>"><?php echo $value;?></textarea>        
-        <?php if (!empty($note)): ?><p class="description"><?php echo $note;?></p><?php endif;?>
+        <?php if (!empty($note)): ?><p class="description"><?php echo $note;?><span class="dashicons dashicons-no-alt"></span></p><?php endif;?>
     </td>
 </tr>    

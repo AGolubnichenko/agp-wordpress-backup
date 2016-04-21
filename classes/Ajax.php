@@ -1,7 +1,7 @@
 <?php
 namespace Agp\Plugin\Awb;
 
-use Agp\Core\Ajax\AjaxAbstract;
+use Awb\Core\Ajax\AjaxAbstract;
 
 class Ajax extends AjaxAbstract {
     /**

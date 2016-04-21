@@ -12,8 +12,11 @@
         "installation-source": "source",
         "autoload": {
             "psr-4": {
-                "Agp\\Core\\": "src/classes/"
-            }
+                "Awb\\Core\\": "src/classes/"
+            },
+            "files": [
+                "src/classes/Agp.php"
+            ]
         }
     },
     {

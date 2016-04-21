@@ -1,5 +1,5 @@
 <?php
-namespace Agp\Plugin\Awb;
+namespace Awb\Core;
 
 use Awb\Core\Config\SettingsAbstract;
 

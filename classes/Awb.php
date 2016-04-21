@@ -1,8 +1,8 @@
 <?php
 namespace Agp\Plugin\Awb;
 
-use Agp\Core\ModuleAbstract;
-use Agp\Core\Persistence\Session\Session;
+use Awb\Core\ModuleAbstract;
+use Awb\Core\Persistence\Session\Session;
 use Agp\Plugin\Awb\Settings;
 use Agp\Plugin\Awb\Ajax;
 

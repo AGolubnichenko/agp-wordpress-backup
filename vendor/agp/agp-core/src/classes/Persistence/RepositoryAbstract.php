@@ -1,5 +1,5 @@
 <?php
-namespace Agp\Core\Persistence;
+namespace Awb\Core\Persistence;
 
 abstract class RepositoryAbstract {
     private $data;

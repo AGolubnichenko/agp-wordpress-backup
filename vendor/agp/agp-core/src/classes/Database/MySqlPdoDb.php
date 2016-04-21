@@ -1,5 +1,5 @@
 <?php
-namespace Agp\Core\Database;
+namespace Awb\Core\Database;
 
 class MySqlPdoDb extends DbAbstract {
     

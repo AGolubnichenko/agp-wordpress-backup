@@ -1,5 +1,5 @@
 <?php
-namespace Agp\Core\Error;
+namespace Awb\Core\Error;
 
 abstract class ExceptionAbstract extends \Exception implements ExceptionInterface {
     protected $message = 'Unknown exception';     // Exception message

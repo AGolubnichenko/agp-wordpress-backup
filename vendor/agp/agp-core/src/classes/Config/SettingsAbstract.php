@@ -1,5 +1,5 @@
 <?php
-namespace Agp\Core\Config;
+namespace Awb\Core\Config;
 
 /**
  * Settings page abstract class
@@ -45,9 +45,10 @@ abstract class SettingsAbstract extends ConfigAbstract {
     /**
      * Constructor
      */
-    public function __construct( $data ) {    
-        parent::__construct($data);
-        
+    public function __construct( $data = array() ) {  
+        $default = include ( dirname(dirname(dirname(__FILE__))). '/config/config.php' ) ;        
+        parent::__construct(array_merge($default, $data));
+
         $this->refreshConfig();
         
         add_action( 'admin_init', array( $this, 'registerSettings' ) );        

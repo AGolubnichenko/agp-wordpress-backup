@@ -1,5 +1,5 @@
 <?php
-namespace Agp\Core\Persistence\Session;
+namespace Awb\Core\Persistence\Session;
 
 class SessionAbstract {
 

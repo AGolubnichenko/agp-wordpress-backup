@@ -7,6 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Ifsnop\\' => array($vendorDir . '/ifsnop/mysqldump-php/src/Ifsnop'),
+    'Awb\\Core\\' => array($vendorDir . '/agp/agp-core/src/classes'),
     'Agp\\Plugin\\Awb\\' => array($baseDir . '/classes'),
-    'Agp\\Core\\' => array($vendorDir . '/agp/agp-core/src/classes'),
 );

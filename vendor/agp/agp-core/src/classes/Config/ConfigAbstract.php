@@ -1,5 +1,5 @@
 <?php
-namespace Agp\Core\Config;
+namespace Awb\Core\Config;
 
 abstract class ConfigAbstract {
 
@@ -8,7 +8,7 @@ abstract class ConfigAbstract {
     /**
      * Constructor
      */
-    public function __construct( array $data ) {    
+    public function __construct( $data = array() ) {    
         $this->data = $data;
     }
     

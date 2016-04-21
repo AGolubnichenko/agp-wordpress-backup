@@ -1,5 +1,5 @@
 <?php
-namespace Agp\Core\Ajax;
+namespace Awb\Core\Ajax;
 
 abstract class AjaxAbstract {
     

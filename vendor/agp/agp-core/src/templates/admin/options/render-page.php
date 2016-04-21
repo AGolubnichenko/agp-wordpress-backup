@@ -6,31 +6,34 @@ if (!empty($args->fields)):
     
     if (!empty($fields)) :
     
-        foreach ($sections as $sk => $sv) :
-            if (!empty($sv['label'])) :
-            ?>        
+        foreach ($sections as $sk => $sv) : ?>
+        <div class="agp-settings-content">
+            
+            <?php if (!empty($sv['label'])) : ?>        
+            <div class="agp-settings-title"> 
                 <h3>
                     <?php echo $sv['label'] ?>
                 </h3>
-            <?php
-            endif;
-            ?>
-
-            <table class="form-table">
-                <tbody>
-                <?php        
-                    foreach ($fields as $fk => $fv) :
-                        if (!empty($fv['section']) && $fv['section'] == $sk || $sk == 'default' ) :
-                            if (!empty($fv['type'])) :
-                                $args->field = $fk;
-                                echo $args->settings->getParentModule()->getTemplate('admin/options/fields/' . $fv['type'] , $args);
-                            endif;                    
-                        endif;
-                    endforeach;                
-                ?>
-                </tbody>        
-            </table>                
-
+            </div>    
+            <?php endif; ?>
+            
+            <div class="agp-settings-inner-table">
+                <table class="form-table">
+                    <tbody>
+                    <?php        
+                        foreach ($fields as $fk => $fv) :
+                            if (!empty($fv['section']) && $fv['section'] == $sk || $sk == 'default' ) :
+                                if (!empty($fv['type'])) :
+                                    $args->field = $fk;
+                                    echo $args->settings->getParentModule()->getTemplate('admin/options/fields/' . $fv['type'] , $args);
+                                endif;                    
+                            endif;
+                        endforeach;                
+                    ?>
+                    </tbody>        
+                </table>                
+            </div>    
+        </div>    
             <?php 
         endforeach;        
     endif;

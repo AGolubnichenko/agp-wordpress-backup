@@ -1,5 +1,5 @@
 <?php
-namespace Agp\Core\Curl;
+namespace Awb\Core\Curl;
 
 class Curl {
     

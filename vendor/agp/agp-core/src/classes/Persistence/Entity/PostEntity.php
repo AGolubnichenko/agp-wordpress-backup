@@ -1,5 +1,5 @@
 <?php
-namespace Agp\Core\Persistence\Entity;
+namespace Awb\Core\Persistence\Entity;
 
 class PostEntity extends Entity {
     private $post_author;
