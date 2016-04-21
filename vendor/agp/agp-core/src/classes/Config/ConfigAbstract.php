@@ -3,12 +3,15 @@ namespace Awb\Core\Config;
 
 abstract class ConfigAbstract {
 
+    private $key;
+    
     protected $data;
     
     /**
      * Constructor
      */
-    public function __construct( $data = array() ) {    
+    public function __construct( $data = array(), $key = NULL ) {    
+        $this->key = $key;
         $this->data = $data;
     }
     
@@ -51,13 +54,29 @@ abstract class ConfigAbstract {
  
     
     public function applyData (array $data) {
-        
-        $this->data = array_merge($this->data, $data);
+        $key = $this->key;
+        if (!empty($key)) {
+            $this->data[$key] = array_merge($this->data[$key], $data);    
+        } else {
+            $this->data = array_merge($this->data, $data);    
+        }        
     }
     
     public function getConfig() {
-        
-        return $this->arrayToObject($this->data);
+        $key = $this->key;
+        if (!empty($key)) {
+            return $this->arrayToObject($this->data[$key]);
+        } else {
+            return $this->arrayToObject($this->data);    
+        }
     }
    
+    public function getKey() {
+        return $this->key;
+    }
+
+    public function setKey($key) {
+        $this->key = $key;
+        return $this;
+    }
 }

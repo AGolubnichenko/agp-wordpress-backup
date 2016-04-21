@@ -54,7 +54,7 @@ class Agp extends ModuleAbstract {
         parent::__construct(dirname(dirname(__FILE__)));
         
         $this->settings = Settings::instance( $this );
-        $this->version = $this->settings->getVersion( $this->getKey() );
+        $this->version = $this->settings->getVersion();
         
         add_action( 'wp_enqueue_scripts', array($this, 'enqueueScripts' ) );                
         add_action( 'admin_enqueue_scripts', array($this, 'enqueueAdminScripts' ));       

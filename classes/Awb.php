@@ -82,7 +82,7 @@ class Awb extends ModuleAbstract {
         parent::__construct(dirname(dirname(__FILE__)));
         
         $this->settings = Settings::instance( $this );
-        $this->version = $this->settings->getVersion( $this->getKey() );
+        $this->version = $this->settings->getVersion();
         $this->session = Session::instance();        
         $this->ajax = Ajax::instance();
         $this->backupManager = BackupManager::instance();

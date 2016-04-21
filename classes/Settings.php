@@ -51,7 +51,8 @@ class Settings extends SettingsAbstract {
      */
     public function __construct() {
         $config = include ($this->getParentModule()->getBaseDir() . '/config/config.php');        
-        parent::__construct($config);
+        $key = $this->getParentModule()->getKey();
+        parent::__construct($config, $key);
     }
     
     public static function getParentModule() {

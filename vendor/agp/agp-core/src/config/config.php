@@ -1,8 +1,8 @@
 <?php
 return array(
-    'version' => array(
-        'agp_core' => '2.0.0',
-    ),    
+    'agp_core' => array(
+        'version' => '2.0.0',
+    ),
 );
 
 
