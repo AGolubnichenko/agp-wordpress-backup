@@ -108,7 +108,10 @@ class Awb extends ModuleAbstract {
         wp_register_style( 'awb-css', $this->getAssetUrl('css/admin.css') );   
         
         wp_enqueue_script( 'awb' );         
-        wp_enqueue_style( 'awb-css' );            
+        wp_enqueue_style( 'awb-css' );     
+        
+        wp_dequeue_style( 'agp-options-css' ); 
+        wp_enqueue_style( 'awb-options-css', $this->getAssetUrl('css/agp-options.css') );           
     }
 
     public function getVersion() {
