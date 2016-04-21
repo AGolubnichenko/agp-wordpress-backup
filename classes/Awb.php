@@ -13,7 +13,7 @@ class Awb extends ModuleAbstract {
      * 
      * @var type 
      */
-    private $version = '1.0.0';
+    private $version;
     
     /**
      * Plugin settings
@@ -78,9 +78,11 @@ class Awb extends ModuleAbstract {
     }        
     
     public function __construct() {
+        $this->setKey('agp_wordpress_backup');
         parent::__construct(dirname(dirname(__FILE__)));
         
         $this->settings = Settings::instance( $this );
+        $this->version = $this->settings->getVersion( $this->getKey() );
         $this->session = Session::instance();        
         $this->ajax = Ajax::instance();
         $this->backupManager = BackupManager::instance();

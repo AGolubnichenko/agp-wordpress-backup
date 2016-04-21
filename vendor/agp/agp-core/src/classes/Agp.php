@@ -13,7 +13,7 @@ class Agp extends ModuleAbstract {
     /**
      * Plugin settings
      * 
-     * @var Settings
+     * @var Config\SettingsAbstract
      */
     private $settings;    
     
@@ -50,9 +50,11 @@ class Agp extends ModuleAbstract {
     }        
     
     public function __construct() {
+        $this->setKey('agp_core');
         parent::__construct(dirname(dirname(__FILE__)));
         
         $this->settings = Settings::instance( $this );
+        $this->version = $this->settings->getVersion( $this->getKey() );
         
         add_action( 'wp_enqueue_scripts', array($this, 'enqueueScripts' ) );                
         add_action( 'admin_enqueue_scripts', array($this, 'enqueueAdminScripts' ));       

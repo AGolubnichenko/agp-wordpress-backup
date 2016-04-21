@@ -47,7 +47,7 @@ abstract class SettingsAbstract extends ConfigAbstract {
      */
     public function __construct( $data = array() ) {  
         $default = include ( dirname(dirname(dirname(__FILE__))). '/config/config.php' ) ;        
-        parent::__construct(array_merge($default, $data));
+        parent::__construct(array_merge_recursive($default, $data));
 
         $this->refreshConfig();
         
@@ -330,4 +330,13 @@ abstract class SettingsAbstract extends ConfigAbstract {
         return $settings;        
     }    
 
+    public function getVersion ( $key = NULL ) {
+        if (!empty($key)) {
+            if (!empty($this->getConfig()->version->$key)) {
+                return $this->getConfig()->version->$key;
+            } else {
+                return '1.0.0';
+            }            
+        }
+    }
 }

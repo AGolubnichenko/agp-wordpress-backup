@@ -3,6 +3,7 @@ namespace Awb\Core;
 
 abstract class ModuleAbstract {
     
+    private $key;
     /**
      * Base module directory
      * 
@@ -298,5 +299,13 @@ abstract class ModuleAbstract {
         $this->defaultTemplateCoreDir = $defaultTemplateCoreDir;
         return $this;
     }
-    
+
+    public function getKey() {
+        return $this->key;
+    }
+
+    public function setKey($key) {
+        $this->key = $key;
+        return $this;
+    }
 }
