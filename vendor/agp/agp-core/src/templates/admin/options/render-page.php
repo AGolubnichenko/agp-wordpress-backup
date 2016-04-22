@@ -18,6 +18,11 @@ if (!empty($args->fields)):
             <?php endif; ?>
             
             <div class="agp-settings-inner-table">
+                <?php if (!empty($sv['description_before'])) : ?>        
+                <div class="agp-settings-description before"> 
+                    <?php echo $sv['description_before'] ?>
+                </div>                    
+                <?php endif; ?>
                 <table class="form-table">
                     <tbody>
                     <?php        
@@ -31,7 +36,12 @@ if (!empty($args->fields)):
                         endforeach;                
                     ?>
                     </tbody>        
-                </table>                
+                </table>   
+                <?php if (!empty($sv['description_after'])) : ?>        
+                <div class="agp-settings-description after"> 
+                    <?php echo $sv['description_after'] ?>
+                </div>                    
+                <?php endif; ?>                
             </div>    
         </div>    
             <?php 

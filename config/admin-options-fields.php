@@ -4,6 +4,8 @@ return array(
         'sections' => array(
             'global_settings' => array(
                 'label' => 'sss',
+                'description_before' => 'zzzz1111111',
+                'description_after' => 'zzzz22ldjdkfds',
             ),            
         ),
         'fields' => array(
