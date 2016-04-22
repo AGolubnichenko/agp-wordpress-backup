@@ -117,18 +117,29 @@ abstract class ModuleAbstract {
     }
     
     public function init() {
-        $this->applyAdminLessCss();        
+        $this->applyLessCss();        
     }
     
-    public function applyAdminLessCss() {
+    public function applyLessCss() {
+        $config = array();
+        if ( !empty($this->getSettings()->getConfig()->admin->style) ) {
+            $config = $this->getSettings()->objectToArray( $this->getSettings()->getConfig()->admin->style );   
+        }                        
+        
         if (is_admin()) {
-            if ( !empty($this->getSettings()->getConfig()->admin->style) ) {
-                $config = $this->getSettings()->objectToArray( $this->getSettings()->getConfig()->admin->style );   
-                $this->lessParser->registerAdminLessCss( $this->getAssetPath('less/admin/agp-options.less'), array_merge($config, array(
-                    'key' => $this->getKey(),
-                )));
-            }
+            $this->lessParser->registerAdminLessCss( $this->getAssetPath('less/admin/agp-options.less'), array_merge($config, array(
+                'key' => $this->getKey(),
+            )));
         }
+        
+        if (is_admin_bar_showing()) {
+            $this->lessParser->registerAdminLessCss( $this->getAssetPath('less/admin/admin-toolbar.less'), array_merge($config, array(
+                'key' => $this->getKey(),
+            )));            
+            $this->lessParser->registerLessCss( $this->getAssetPath('less/admin/admin-toolbar.less'), array_merge($config, array(
+                'key' => $this->getKey(),
+            )));                        
+        }        
     }
     
     /**

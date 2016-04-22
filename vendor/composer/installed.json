@@ -165,13 +165,13 @@
         "source": {
             "type": "git",
             "url": "https://github.com/AGolubnichenko/agp-core/",
-            "reference": "ecf86fddb018e58c2536a72763df8f1d6cde0db8"
+            "reference": "e018e57604762fd21c403a8e61c878a66b1da82b"
         },
         "require": {
             "oyejorge/less.php": "~1.7.0.9",
             "php": ">=5.3.0"
         },
-        "time": "2016-04-22 14:17:11",
+        "time": "2016-04-22 15:16:08",
         "type": "library",
         "installation-source": "source",
         "autoload": {

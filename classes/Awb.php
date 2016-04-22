@@ -74,6 +74,7 @@ class Awb extends ModuleAbstract {
         
         add_action( 'wp_enqueue_scripts', array($this, 'enqueueScripts' ) );                
         add_action( 'admin_enqueue_scripts', array($this, 'enqueueAdminScripts' )); 
+        add_action( 'admin_bar_menu', array($this, 'adminBarMenu'), 999 );
     }
     
     public function enqueueScripts () {
@@ -98,9 +99,46 @@ class Awb extends ModuleAbstract {
         wp_enqueue_style( 'awb-css' );     
         
         wp_dequeue_style( 'agp-options-css' ); 
-        wp_enqueue_style( 'awb-options-css', $this->getAssetUrl('css/agp-options.css') );           
+        wp_enqueue_style( 'awb-options-css', $this->getAssetUrl('css/agp-options.css') );
     }
 
+    public function adminBarMenu () {
+        global $wp_admin_bar;
+
+        if ( !is_super_admin() || !is_admin_bar_showing() )
+            return;
+        
+        $wp_admin_bar->add_menu(array(
+            'id' => 'agp-wordpress-backup-menu',
+            'title' => '<span class="ab-icon"></span><span class="ab-label">Backup</span>',
+            'parent' => '',
+            'href' => null,
+            'group' => NULL,
+            'meta' => array(
+            ),
+        ));
+        
+        $wp_admin_bar->add_menu(array(
+            'id' => 'agp-wordpress-backup-menu-download',
+            'title' => 'Download',
+            'parent' => 'agp-wordpress-backup-menu',
+            'href' => site_url('?awb-backup-download=1'),
+            'group' => NULL,
+            'meta' => array(
+            ),
+        ));        
+        
+        $wp_admin_bar->add_menu(array(
+            'id' => 'agp-wordpress-backup-menu-settings',
+            'title' => 'Settings',
+            'parent' => 'agp-wordpress-backup-menu',
+            'href' => admin_url( 'admin.php?page=agp_wordpress_backup'),
+            'group' => NULL,
+            'meta' => array(
+            ),
+        ));                
+    }    
+    
     public function getSession() {
         return $this->session;
     }
