@@ -73,7 +73,7 @@ class Awb extends ModuleAbstract {
         $this->backupManager = BackupManager::instance();
         
         add_action( 'wp_enqueue_scripts', array($this, 'enqueueScripts' ) );                
-        add_action( 'admin_enqueue_scripts', array($this, 'enqueueAdminScripts' ));       
+        add_action( 'admin_enqueue_scripts', array($this, 'enqueueAdminScripts' )); 
     }
     
     public function enqueueScripts () {

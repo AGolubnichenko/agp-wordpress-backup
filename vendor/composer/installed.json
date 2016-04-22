@@ -64,50 +64,6 @@
         ]
     },
     {
-        "name": "agp/agp-core",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/AGolubnichenko/agp-core/",
-            "reference": "5398101ac21233db975b78cd89f6d392579791f7"
-        },
-        "require": {
-            "oyejorge/less.php": "~1.7.0.9",
-            "php": ">=5.3.0"
-        },
-        "time": "2016-04-22 14:05:07",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Awb\\Core\\": "src/classes/"
-            },
-            "files": [
-                "src/classes/Agp.php"
-            ]
-        },
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Alexey Golubnichenko",
-                "email": "profosbox@gmail.com"
-            }
-        ],
-        "description": "Collection of a base classes for custom WordPress plugins",
-        "homepage": "https://github.com/AGolubnichenko/agp-core/",
-        "keywords": [
-            "agp",
-            "class",
-            "core",
-            "plugin",
-            "theme",
-            "wordpress"
-        ]
-    },
-    {
         "name": "ifsnop/mysqldump-php",
         "version": "v2.1",
         "version_normalized": "2.1.0.0",
@@ -200,6 +156,50 @@
         "description": "Dropbox SDK for PHP",
         "keywords": [
             "dropbox"
+        ]
+    },
+    {
+        "name": "agp/agp-core",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/AGolubnichenko/agp-core/",
+            "reference": "ecf86fddb018e58c2536a72763df8f1d6cde0db8"
+        },
+        "require": {
+            "oyejorge/less.php": "~1.7.0.9",
+            "php": ">=5.3.0"
+        },
+        "time": "2016-04-22 14:17:11",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Awb\\Core\\": "src/classes/"
+            },
+            "files": [
+                "src/classes/Agp.php"
+            ]
+        },
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Alexey Golubnichenko",
+                "email": "profosbox@gmail.com"
+            }
+        ],
+        "description": "Collection of a base classes for custom WordPress plugins",
+        "homepage": "https://github.com/AGolubnichenko/agp-core/",
+        "keywords": [
+            "agp",
+            "class",
+            "core",
+            "plugin",
+            "theme",
+            "wordpress"
         ]
     }
 ]
