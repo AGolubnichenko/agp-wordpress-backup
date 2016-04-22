@@ -15,7 +15,7 @@ class Settings extends SettingsAbstract {
     /**
      * Parent Module
      * 
-     * @var Agp_Module
+     * @var ModuleAbstract
      */
     protected static $_parentModule;
     
@@ -47,7 +47,7 @@ class Settings extends SettingsAbstract {
     /**
      * Constructor 
      * 
-     * @param Agp_Module $parentModule
+     * @param ModuleAbstract $parentModule
      */
     public function __construct() {
         $config = include ($this->getParentModule()->getBaseDir() . '/config/config.php');        

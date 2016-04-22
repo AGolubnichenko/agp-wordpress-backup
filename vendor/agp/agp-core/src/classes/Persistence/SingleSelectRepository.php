@@ -1,6 +1,8 @@
 <?php
 namespace Awb\Core\Persistence;
 
+use Awb\Core\Persistence\Entity\EntityAbstract;
+
 class SingleSelectRepository extends RepositoryAbstract {
 
     /**
@@ -13,13 +15,13 @@ class SingleSelectRepository extends RepositoryAbstract {
     /**
      * Session Object
      * 
-     * @var Agp_Session
+     * @var Session
      */
     private $session;
     
     public function __construct($data = NULL) {
         $this->name = strtolower(get_class($this));                
-        $this->session = Agp_Session::instance(); 
+        $this->session = Session::instance(); 
 
         parent::__construct($data);
     }
@@ -31,7 +33,7 @@ class SingleSelectRepository extends RepositoryAbstract {
         }                    
     }    
     
-    public function setActive (Agp_EntityAbstract $entity) {
+    public function setActive (EntityAbstract $entity) {
         if (!empty($entity)) {
             $activeEntity = $this->getActive();        
             if (empty($activeEntity) || $activeEntity->getId() != $entity->getId()) {
@@ -73,7 +75,7 @@ class SingleSelectRepository extends RepositoryAbstract {
         return $this;
     }
 
-    public function setSession(Agp_Session $session) {
+    public function setSession(Session $session) {
         $this->session = $session;
         return $this;
     }

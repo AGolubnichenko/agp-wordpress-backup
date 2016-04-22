@@ -1,6 +1,8 @@
 <?php
 namespace Awb\Core\Persistence;
 
+use Awb\Core\Persistence\Entity\EntityAbstract;
+
 class MultiSelectRepository extends RepositoryAbstract {
 
     /**
@@ -13,13 +15,13 @@ class MultiSelectRepository extends RepositoryAbstract {
     /**
      * Session Object
      * 
-     * @var Agp_Session
+     * @var Session
      */
     private $session;
     
     public function __construct($data = NULL) {
         $this->name = strtolower(get_class($this));                
-        $this->session = Agp_Session::instance(); 
+        $this->session = Session::instance(); 
 
         parent::__construct($data);
     }
@@ -30,7 +32,7 @@ class MultiSelectRepository extends RepositoryAbstract {
 //        }                    
     }    
     
-    public function addActive (Agp_EntityAbstract $entity) {
+    public function addActive (EntityAbstract $entity) {
         if (!empty($entity)) {
             $this->addActiveById($entity->getId());            
         }        
@@ -53,7 +55,7 @@ class MultiSelectRepository extends RepositoryAbstract {
         }
     }            
 
-    public function deleteActive (Agp_EntityAbstract $entity) {
+    public function deleteActive (EntityAbstract $entity) {
         if (!empty($entity)) {        
             $this->deleteActiveById($entity->getId());
         }
@@ -76,7 +78,7 @@ class MultiSelectRepository extends RepositoryAbstract {
         }
     }                
 
-    public function toggleActive (Agp_EntityAbstract $entity) {
+    public function toggleActive (EntityAbstract $entity) {
         if (!empty($entity)) {
             $this->toggleActiveById($entity->getId());
         }
@@ -123,7 +125,7 @@ class MultiSelectRepository extends RepositoryAbstract {
         return count($this->getActiveAll());
     }
     
-    public function isActive (Agp_EntityAbstract $entity) {
+    public function isActive (EntityAbstract $entity) {
         if (!empty($entity)) {
             return $this->isActiveById($entity->getId());        
         }        
@@ -151,7 +153,7 @@ class MultiSelectRepository extends RepositoryAbstract {
         return $this;
     }
 
-    public function setSession(Agp_Session $session) {
+    public function setSession(Session $session) {
         $this->session = $session;
         return $this;
     }

@@ -1,6 +1,8 @@
 <?php
 namespace Awb\Core\Persistence;
 
+use Awb\Core\Persistence\Entity\EntityAbstract;
+
 abstract class RepositoryAbstract {
     private $data;
     
@@ -23,7 +25,7 @@ abstract class RepositoryAbstract {
     }
 
     
-    public function add(Agp_EntityAbstract $entity) {
+    public function add(EntityAbstract $entity) {
         if (!isset($this->data[$entity->getId()])) {
             $this->data[$entity->getId()] = $entity;    
         }

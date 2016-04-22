@@ -11,11 +11,12 @@
     ],
     "license": "MIT",
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "oyejorge/less.php": "~1.7.0.9"
     },
     "autoload": {
         "psr-4": {
-            "Agp\\Core\\": "src/classes/"
+            "Awb\\Core\\": "src/classes/"
         },
         "files": ["src/classes/Agp.php"]
     }

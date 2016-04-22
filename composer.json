@@ -1,22 +1,8 @@
 {
     "repositories": [
         {
-            "type": "package",
-            "package": {
-                "name": "agp/agp-core",
-                "version": "2.0.0",
-                "source": {
-                    "url": "https://github.com/AGolubnichenko/agp-core/",
-                    "type": "git",
-                    "reference": "master"
-                },
-                "autoload": {
-                    "psr-4": {
-                        "Awb\\Core\\": "src/classes/"
-                    },
-                    "files": ["src/classes/Agp.php"]
-                }
-            }                        
+            "type":"git",
+            "url":"https://github.com/AGolubnichenko/agp-core/"
         }
     ],    
     "require" : {
@@ -30,13 +16,10 @@
         }
     },
     "scripts": {
-        "post-update-cmd": [
+        "post-autoload-dump": [
             "rm -rf vendor/**/**/.git",
-            "grep -rl 'Agp' ./vendor/agp/ | xargs sed -i 's/Agp\\\\Core/Awb\\\\Core/g'"
-        ],
-        "post-install-cmd": [
-            "rm -rf vendor/**/**/.git",
-            "grep -rl 'Agp' ./vendor/agp/ | xargs sed -i 's/Agp\\\\Core/Awb\\\\Core/g'"
+            "grep -rl 'Agp' ./vendor/ | xargs sed -i 's/Agp\\\\Core/Awb\\\\Core/g'",
+            "grep -rl 'Agp' ./vendor/ | xargs sed -i 's/Agp\\\\\\\\Core/Awb\\\\\\\\Core/g'"
         ]
     }
 }
