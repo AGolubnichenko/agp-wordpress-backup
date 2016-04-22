@@ -6,7 +6,7 @@ return array(
             'menu' => include (__DIR__ . '/admin-menu.php'),
             'options' => include (__DIR__ . '/admin-options.php'),     
             'style' => array(
-                'main_color' => 'red',
+                'main_color' => '#00796b',
             ),
         ),           
     ),
