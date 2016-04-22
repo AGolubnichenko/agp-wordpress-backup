@@ -13,6 +13,8 @@
     $args->data = $args->settings->getSettings($args->key);
     $args->fields = $args->settings->getFields($args->key);
     $title = !empty($args->settings->getConfig()->admin->options->title) ? $args->settings->getConfig()->admin->options->title : '';
+    $description = !empty($args->settings->getConfig()->admin->options->description) ? $args->settings->getConfig()->admin->options->description : '';
+    $links = !empty($args->settings->getConfig()->admin->options->links) ? $args->settings->objectToArray( $args->settings->getConfig()->admin->options->links ) : '';
     $Id = $args->settings->getParentModule()->getKey();
 ?>
 <div class="<?php echo $Id;?>">
@@ -25,19 +27,27 @@
                 </td>
                 <td class="agp-plugin-headline-info">
                     <h1><?php echo $title;?></h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#" target="blank" title="" class="agp-plugin-headline-rate">Fusce</a> feugiat eu velit sit amet ullamcorper.</p> 
+                    
+                    <?php if (!empty($description)) :?>
+                    <p><?php echo $description;?></p> 
+                    <?php endif;?>
                 </td>
+                
+                <?php if (!empty($links['list'])):?>
                 <td class="agp-plugin-headline-links">
                     <div class="agp-plugin-headline-links-wrapper">
-                        <h2>Useful Links</h2>
+                        <?php if (!empty($links['title'])) :?>
+                        <h2><?php echo $links['title'];?></h2>
+                        <?php endif;?>
+                        
                         <ul>
-                            <li><a href="#" target="_blank" title="Documentation"><span class="dashicons dashicons-book"></span> Documentation</a></li>
-                            <li><a href="#" target="_blank" title="FAQ"><span class="dashicons dashicons-info"></span> FAQ</a></li>
-                            <li><a href="#" target="_blank" title="Support Form"><span class="dashicons dashicons-sos"></span> Support Form</a></li>
-                            <li><a href="#" target="_blank" title="Live Demo"><span class="dashicons dashicons-email-alt"></span> Live Demo</a></li>
+                        <?php foreach ($links['list'] as $link) : ?>
+                            <li><a href="<?php echo $link['url'];?>" target="<?php echo $link['target'];?>" title="<?php echo $link['title'];?>"><span class="dashicons <?php echo $link['icon'];?>"></span> <?php echo $link['title'];?></a></li>
+                        <?php endforeach; ?>    
                         </ul>                 
                     </div>
                 </td>
+                <?php endif;?>
             </tr>
         </table>
     </div>

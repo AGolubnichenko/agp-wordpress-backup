@@ -337,5 +337,8 @@ abstract class SettingsAbstract extends ConfigAbstract {
             return '1.0.0';
         }            
     }
+    
+    public static function renderSettingsPage() {
+    }
  
 }
