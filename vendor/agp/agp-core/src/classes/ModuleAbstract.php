@@ -1,9 +1,31 @@
 <?php
 namespace Awb\Core;
 
+use Awb\Core\Config\SettingsAbstract;
+
 abstract class ModuleAbstract {
+
+    /**
+     * Current plugin version
+     * 
+     * @var string 
+     */
+    private $version;
     
+    /**
+     * Module unique key
+     * 
+     * @var string 
+     */
     private $key;
+
+    /**
+     * LESS Parser
+     * 
+     * @var LessParser
+     */
+    private $lessParser;
+
     /**
      * Base module directory
      * 
@@ -71,19 +93,44 @@ abstract class ModuleAbstract {
      */
     private $assetDir;
     
+    /**
+     * Plugin settings
+     * 
+     * @var SettingsAbstract
+     */
+    private $settings;        
     
     /**
      * Constructor
      */
     public function __construct($baseDir = NULL) {
+
+        $this->lessParser = new LessParser();
         
         $this->baseCoreDir = dirname(dirname(__FILE__));
         $this->defaultTemplateCoreDir = $this->baseCoreDir . '/templates';
         $this->defaultAssetCoreDir = $this->baseCoreDir . '/assets';
         
         $this->setBaseDir($baseDir);
+        
+        add_action( 'init', array($this, 'init' ));       
     }
-
+    
+    public function init() {
+        $this->applyAdminLessCss();        
+    }
+    
+    public function applyAdminLessCss() {
+        if (is_admin()) {
+            if ( !empty($this->getSettings()->getConfig()->admin->style) ) {
+                $config = $this->getSettings()->objectToArray( $this->getSettings()->getConfig()->admin->style );   
+                $this->lessParser->registerAdminLessCss( $this->getAssetPath('less/admin/agp-options.less'), array_merge($config, array(
+                    'key' => $this->getKey(),
+                )));
+            }
+        }
+    }
+    
     /**
      * Gets template content
      * 
@@ -108,12 +155,12 @@ abstract class ModuleAbstract {
     }    
 
     /**
-     * Get asset Url
+     * Get asset path
      * 
      * @param string $name
      * @return string
      */
-    public function getAssetUrl($name = NULL) {
+    public function getAssetPath($name = NULL) {
         $resultPath = $this->baseDir;
         
         if (empty($name)) {
@@ -137,8 +184,18 @@ abstract class ModuleAbstract {
             }
         }
         
-        return $this->toUrl($resultPath);
+        return $resultPath;
     }
+    
+    /**
+     * Get asset Url
+     * 
+     * @param string $name
+     * @return string
+     */
+    public function getAssetUrl($name = NULL) {
+        return $this->toUrl( $this->getAssetPath($name) );
+    }    
     
     /**
      * Gets debug information
@@ -308,4 +365,27 @@ abstract class ModuleAbstract {
         $this->key = $key;
         return $this;
     }
+    
+    public function getLessParser() {
+        return $this->lessParser;
+    }
+
+    public function getSettings() {
+        return $this->settings;
+    }
+
+    public function setSettings(SettingsAbstract $settings) {
+        $this->settings = $settings;
+        return $this;
+    }
+    
+    public function getVersion() {
+        return $this->version;
+    }
+
+    public function setVersion($version) {
+        $this->version = $version;
+        return $this;
+    }
+
 }

@@ -21,7 +21,7 @@
         <table>
             <tr>
                 <td class="agp-plugin-headline-icon">                                                                                               
-                    <img src="<?php echo $args->settings->getParentModule()->getAssetUrl( 'images/icons/icon.png' )?>" width="128" height="128" />    
+                    <img src="<?php echo $args->settings->getParentModule()->getAssetUrl( 'images/icons/icon-options.png' )?>" width="128" height="128" />    
                 </td>
                 <td class="agp-plugin-headline-info">
                     <h1><?php echo $title;?></h1>

@@ -9,21 +9,6 @@ use Agp\Plugin\Awb\Ajax;
 class Awb extends ModuleAbstract {
 
     /**
-     * Current plugin version
-     * 
-     * @var type 
-     */
-    private $version;
-    
-    /**
-     * Plugin settings
-     * 
-     * @var Settings
-     */
-    private $settings;    
-    
-    
-    /**
      * Session
      * 
      * @var Session
@@ -81,8 +66,8 @@ class Awb extends ModuleAbstract {
         $this->setKey('agp_wordpress_backup');
         parent::__construct(dirname(dirname(__FILE__)));
         
-        $this->settings = Settings::instance( $this );
-        $this->version = $this->settings->getVersion();
+        $this->setSettings( Settings::instance( $this ) );
+        $this->setVersion( $this->getSettings()->getVersion() );
         $this->session = Session::instance();        
         $this->ajax = Ajax::instance();
         $this->backupManager = BackupManager::instance();
@@ -114,14 +99,6 @@ class Awb extends ModuleAbstract {
         
         wp_dequeue_style( 'agp-options-css' ); 
         wp_enqueue_style( 'awb-options-css', $this->getAssetUrl('css/agp-options.css') );           
-    }
-
-    public function getVersion() {
-        return $this->version;
-    }
-
-    public function getSettings() {
-        return $this->settings;
     }
 
     public function getSession() {

@@ -65,18 +65,18 @@
     },
     {
         "name": "agp/agp-core",
-        "version": "2.0.0",
-        "version_normalized": "2.0.0.0",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/AGolubnichenko/agp-core/",
-            "reference": "c64588c3c340a646033a9247d93217711c8eeea9"
+            "reference": "c7ec295ad23f134aa3d5097c8fc10f963ec00a78"
         },
         "require": {
             "oyejorge/less.php": "~1.7.0.9",
             "php": ">=5.3.0"
         },
-        "time": "2016-04-22 10:35:38",
+        "time": "2016-04-22 12:53:07",
         "type": "library",
         "installation-source": "source",
         "autoload": {

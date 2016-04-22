@@ -2,21 +2,6 @@
 namespace Awb\Core;
 
 class Agp extends ModuleAbstract {
-
-    /**
-     * Current plugin version
-     * 
-     * @var type 
-     */
-    private $version;
-    
-    /**
-     * Plugin settings
-     * 
-     * @var Config\SettingsAbstract
-     */
-    private $settings;    
-    
     
     /**
      * The single instance of the class 
@@ -53,8 +38,8 @@ class Agp extends ModuleAbstract {
         $this->setKey('agp_core');
         parent::__construct(dirname(dirname(__FILE__)));
         
-        $this->settings = Settings::instance( $this );
-        $this->version = $this->settings->getVersion();
+        $this->setSettings( Settings::instance( $this ) );
+        $this->setVersion( $this->getSettings()->getVersion() );
         
         add_action( 'wp_enqueue_scripts', array($this, 'enqueueScripts' ) );                
         add_action( 'admin_enqueue_scripts', array($this, 'enqueueAdminScripts' ));       
@@ -68,13 +53,6 @@ class Agp extends ModuleAbstract {
 //        wp_enqueue_style( 'agp-options-css' );                    
     }
 
-    public function getVersion() {
-        return $this->version;
-    }
-
-    public function getSettings() {
-        return $this->settings;
-    }
 }
 
 Agp::instance();

@@ -4,9 +4,10 @@
             "type":"git",
             "url":"https://github.com/AGolubnichenko/agp-core/"
         }
-    ],    
+    ],   
+    "minimum-stability": "dev",
     "require" : {
-        "agp/agp-core": "2.*",
+        "agp/agp-core": "master",
         "ifsnop/mysqldump-php": "2.*",
         "dropbox/dropbox-sdk": "1.1.*"
     },
